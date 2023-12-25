@@ -1,4 +1,8 @@
-.App {
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +39,171 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+code {
+  font-size: 1.2em;
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+button{
+  height: 100px;
+  width: 300px;
+  border-radius:10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px auto;
+}
+button:hover{
+  background-color: #93e0c6;
+  color: white;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.items {
+  height: 100px;
+
+}
+
+
+li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  flex-direction: row;
+}
+
+.input{
+  display: flex;
+  text-align: center;
+  border-radius: 30px;
+  margin-left: 40%;
+  margin-right: 06%;
+
+}
+
+.paybutton{
+  height: 30px;
+  width: 90px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px auto;
+  background-color: #dbe6e2;
+  color: rgb(82, 79, 109);
+  text-align: center;
+  text-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items:right;
+  float: right;
+}
+
+.paybutton:hover{
+  background-color: #93e0c6;
+  color: white;
+}
+
+.medicineinfo{
+  justify-content: center;
+  align-items: center;
+  margin-left: 400px;
+  margin-right: auto;
+}
+.medinecontent{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: wrap;
+  text-align: justify;
+  opacity: 0.8;
+  margin-left: auto;
+
+
+}
+
+
+
+
+
+ */
+ .dropdown {
+  position: absolute ;
+  left: 2rem;
+  top: 3rem;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.dropdown-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background-color: #404649;
+}
+.total-price {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  text-align: right;
 }
