@@ -1,11 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from 'react-toastify';
+import { additem } from "../features/cart/Slice";
 
 
 const CartDropdown = ({ items }) => {
-    const totalPrice = items.reduce((acc, item) => acc + (item.price), 0);
-    const medicineCount = items.reduce((acc, item) => {
+    const meditems = useSelector(state=>state.carts)
+    console.log(meditems)
+    const totalPrice = meditems.reduce((acc, item) => acc + (item.price), 0);
+    const medicineCount = meditems.reduce((acc, item) => {
       // If the item already exists in the accumulator, increase its count
       if (acc[item.medname]) {
         acc[item.medname] += 1;
@@ -27,7 +31,7 @@ const CartDropdown = ({ items }) => {
         <div className="dropdown overflow-scroll">
           <ul>
             {medicineList.map((element, index, quantity) => (
-              <li key={index} style={{ color: 'blue' }} className='items'>
+              <li key={index} style={{ color: 'blue' }} className='meditems'>
                 <div>Name: {element.medname}</div>
                 <div>price: {element.price}</div>
                 <div>count: {medicineCount[element.medname]}</div>
@@ -35,7 +39,7 @@ const CartDropdown = ({ items }) => {
               </li>
             ))}
           </ul>
-          <div>{items.length}</div>
+          <div>{meditems.length}</div>
           <div className="total-price">
             Total: ${totalPrice.toFixed(2)}
             <button className='paybutton'>pay</button>
@@ -51,6 +55,8 @@ const CartDropdown = ({ items }) => {
     const [buy, Setbuy] = useState([]);
     const [cartItems, SetcartItems] = useState(false);
     const [dropdown, Setdropdown] = useState(false);
+    const [cartinput,setCartInput]=useState('');
+    const dispatch = useDispatch();
   
     const handleClick = () => {
       Setmedicine(!showmedicine);
@@ -64,6 +70,7 @@ const CartDropdown = ({ items }) => {
       const newbuy = [...buy];
       newbuy.push(medicines[i]);
       Setbuy(newbuy);
+      dispatch(additem(medicines[i]))
       toast.success('Added to cart');
     }
   
@@ -86,7 +93,7 @@ const CartDropdown = ({ items }) => {
   
     const medicineList = showmedicine && (
       <ul className="space-y-4 overflow-scroll lg:h-[32rem] ">
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center meditems-center'>
           <input
             type="text"
             placeholder="Search issue"
@@ -101,7 +108,7 @@ const CartDropdown = ({ items }) => {
           >
             Cart
           </button>
-          {dropdown && <CartDropdown items={buy} />}
+          {dropdown && <CartDropdown meditems={buy} />}
           <button
             className="bg-red-500 hover:bg-red-700 
       text-white font-bold py-2 px-4 m-3 rounded"
@@ -112,8 +119,8 @@ const CartDropdown = ({ items }) => {
         </div>
         {filtermedicine.map((element, index) => (
           <div key={index} className="border rounded p-4 flex 
-      justify-center items-center lg:w-[38rem] m-auto ">
-            <li className="text-blue-500 items align-baseline">
+      justify-center meditems-center lg:w-[38rem] m-auto ">
+            <li className="text-blue-500 meditems align-baseline">
               <div className=''>
                 <div className="font-semibold">Name: {element.medname}</div>
                 <div>Issue: {element.issue}</div>
@@ -135,7 +142,7 @@ const CartDropdown = ({ items }) => {
     return (
       <>
         <div className="mt-4">
-          <div className='flex justify-center items-center px-2 py-2 m-1'>
+          <div className='flex justify-center meditems-center px-2 py-2 m-1'>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
               onClick={handleClick}
